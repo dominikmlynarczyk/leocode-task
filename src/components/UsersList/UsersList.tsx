@@ -2,21 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { api, endpoints } from 'api';
 import UserItem from 'components/UserItem/UserItem';
 import hasNameFilter from 'utils/hasNameFilter';
+import { IUser } from 'types/user.interface';
 import { List, ListHeading } from './UsersList.styles';
 
 type UsersListProps = {
   readonly searchTerm: string;
 };
 
-export interface IUser {
-  id: number;
-  name: string;
-  username: string;
-  key: number;
-}
-
 const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
     api
@@ -36,8 +30,8 @@ const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
       <List>
         {users.length ? (
           users
-            .filter((user: IUser) => hasNameFilter(user.name, searchTerm))
-            .map((user: IUser) => <UserItem key={user.id} user={user} />)
+            .filter((user) => hasNameFilter(user.name, searchTerm))
+            .map((user) => <UserItem key={user.id} user={user} />)
         ) : (
           <p>Fetching data...</p>
         )}
