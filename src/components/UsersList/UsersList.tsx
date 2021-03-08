@@ -1,6 +1,11 @@
+import React from 'react';
 import UserItem from 'components/UserItem/UserItem';
 
-const UsersList = () => (
+type UsersListProps = {
+  readonly searchTerm: string;
+};
+
+const UsersList = React.memo<UsersListProps>(({ searchTerm }) => (
   <>
     <h1>Users list</h1>
     <ul>
@@ -9,6 +14,6 @@ const UsersList = () => (
       <UserItem />
     </ul>
   </>
-);
+));
 
 export default UsersList;
