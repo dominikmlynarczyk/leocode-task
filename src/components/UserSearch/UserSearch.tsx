@@ -1,12 +1,12 @@
 import React from 'react';
 import { SearchWrapper } from './UserSearch.styles';
 
-type UserSearchProps = {
-  readonly setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+type Props = {
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // Returning JSX with <label> element for a11y purposes
-const UserSearch = React.memo<UserSearchProps>(({ setSearchTerm }) => (
+const UserSearch = React.memo<Props>(({ setSearchTerm }) => (
   <SearchWrapper>
     <label htmlFor="search">
       Search for user:

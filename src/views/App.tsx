@@ -7,15 +7,13 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <>
-      <Root>
-        <GlobalStyles />
-        <Wrapper>
-          <UserSearch setSearchTerm={setSearchTerm} />
-          <UsersList searchTerm={searchTerm} />
-        </Wrapper>
-      </Root>
-    </>
+    <Root>
+      <GlobalStyles />
+      <Wrapper>
+        <UserSearch setSearchTerm={setSearchTerm} />
+        <UsersList searchTerm={searchTerm} />
+      </Wrapper>
+    </Root>
   );
 };
 
