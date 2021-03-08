@@ -1,8 +1,10 @@
-const UserItem = () => (
+import { IUser } from 'components/UsersList/UsersList';
+
+const UserItem = ({ user }: { user: IUser }) => (
   <li>
-    <p>1</p>
-    <p>John Doe</p>
-    <p>@john.doe</p>
+    <p>{user.id}</p>
+    <p>{user.name}</p>
+    <p>@{user.username}</p>
   </li>
 );
 
