@@ -1,11 +1,12 @@
 import { IUser } from 'components/UsersList/UsersList';
+import { ListItem } from './UserItem.styles';
 
 const UserItem = ({ user }: { user: IUser }) => (
-  <li>
+  <ListItem>
     <p>{user.id}</p>
     <p>{user.name}</p>
     <p>@{user.username}</p>
-  </li>
+  </ListItem>
 );
 
 export default UserItem;

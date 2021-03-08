@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { api, endpoints } from 'api';
 import UserItem from 'components/UserItem/UserItem';
 import hasNameFilter from 'utils/hasNameFilter';
+import { List, ListHeading } from './UsersList.styles';
 
 type UsersListProps = {
   readonly searchTerm: string;
@@ -21,17 +22,18 @@ const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
     api
       .get(endpoints.users)
       .then(({ data }) => {
+        // setTimeout can be ommited, just to idicate for the user data fetching process
         setTimeout(() => setUsers(data), 1000);
       })
       .catch((error) => {
         throw new Error("Couldn't fetch the data from the external API.");
       });
-  });
+  }, []);
 
   return (
     <>
-      <h1>Users list</h1>
-      <ul>
+      <ListHeading>Users list</ListHeading>
+      <List>
         {users.length ? (
           users
             .filter((user: IUser) => hasNameFilter(user.name, searchTerm))
@@ -39,7 +41,7 @@ const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
         ) : (
           <p>Fetching data...</p>
         )}
-      </ul>
+      </List>
     </>
   );
 });

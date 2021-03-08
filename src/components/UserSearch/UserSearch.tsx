@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchWrapper } from './UserSearch.styles';
 
 type UserSearchProps = {
   readonly setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
@@ -6,7 +7,7 @@ type UserSearchProps = {
 
 // Returning JSX with <label> element for a11y purposes
 const UserSearch = React.memo<UserSearchProps>(({ setSearchTerm }) => (
-  <div>
+  <SearchWrapper>
     <label htmlFor="search">
       Search for user:
       <input
@@ -14,12 +15,12 @@ const UserSearch = React.memo<UserSearchProps>(({ setSearchTerm }) => (
         name="search"
         placeholder="Enter name here..."
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const searchTerm = e.target.value.trim();
+          const searchTerm: string = e.target.value.trim();
           setSearchTerm(searchTerm);
         }}
       />
     </label>
-  </div>
+  </SearchWrapper>
 ));
 
 export default UserSearch;

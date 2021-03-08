@@ -1,4 +1,4 @@
-const hasNameFilter = (name: string, searchTerm: string) => {
+const hasNameFilter = (name: string, searchTerm: string): boolean => {
   if (searchTerm === '') {
     return true;
   }
