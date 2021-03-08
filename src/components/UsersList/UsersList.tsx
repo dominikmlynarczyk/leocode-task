@@ -5,11 +5,7 @@ import hasNameFilter from 'utils/hasNameFilter';
 import { IUser } from 'types/user.interface';
 import { List, ListHeading } from './UsersList.styles';
 
-type UsersListProps = {
-  readonly searchTerm: string;
-};
-
-const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
+const UsersList = ({ searchTerm }: { searchTerm: string }) => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
@@ -38,6 +34,6 @@ const UsersList = React.memo<UsersListProps>(({ searchTerm }) => {
       </List>
     </>
   );
-});
+};
 
 export default UsersList;
